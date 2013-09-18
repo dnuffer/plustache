@@ -3,8 +3,8 @@
 #include <fstream>
 #include <gtest/gtest.h>
 
-#include "include/template.hpp"
-#include "include/plustache_types.hpp"
+#include "template.hpp"
+#include "plustache_types.hpp"
 
 // The fixture for testing class Foo.
 class NestedSectionsTest : public ::testing::Test

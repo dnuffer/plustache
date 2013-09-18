@@ -3,9 +3,9 @@
 #include <fstream>
 #include <gtest/gtest.h>
 
-#include "include/template.hpp"
-#include "include/context.hpp"
-#include "include/plustache_types.hpp"
+#include "template.hpp"
+#include "context.hpp"
+#include "plustache_types.hpp"
 
 // The fixture for testing class Foo.
 class CollectionsTest : public ::testing::Test
