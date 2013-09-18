@@ -4,10 +4,13 @@
 
 int main(int argc, const char *argv[])
 {
+    using namespace Plustache;
+    using namespace std;
+
     template_t t;
     string str_template;
     str_template = "text {{foo}} text";
-    context ctx;
+    Context ctx;
     ctx.add("foo", "bla");
     string s;
     s = t.render(str_template, ctx);

@@ -4,8 +4,8 @@
  * @author Daniel Schauenberg <d@unwiredcouch.com>
  */
 
-#include "include/context.hpp"
-#include "include/plustache_types.hpp"
+#include "context.hpp"
+#include "plustache_types.hpp"
 
 using namespace Plustache;
 

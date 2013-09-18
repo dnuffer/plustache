@@ -4,14 +4,14 @@
  * @author Daniel Schauenberg <d@unwiredcouch.com>
  */
 
-#include "include/template.hpp"
+#include "template.hpp"
 
 #include <string>
 #include <boost/regex.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
-#include "include/plustache_types.hpp"
-#include "include/context.hpp"
+#include "plustache_types.hpp"
+#include "context.hpp"
 
 using namespace Plustache;
 
