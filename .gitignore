@@ -1,3 +1,9 @@
 *.o
 bin/*
 .depend.mf
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+Makefile
+*.a
+src/plustache
