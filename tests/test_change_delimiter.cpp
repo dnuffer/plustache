@@ -2,15 +2,17 @@
 #include <map>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "plustache_types.hpp"
 
+#include "gmock_to_boost.hpp"
+
 // The fixture for testing class Foo.
-class ChangeDelimiterTest : public ::testing::Test
+struct ChangeDelimiterTest
 {
- protected:
     std::string result_string;
     std::string result_file;
     std::string template_string;
@@ -19,14 +21,6 @@ class ChangeDelimiterTest : public ::testing::Test
     std::string file;
 
     ChangeDelimiterTest()
-    {
-    }
-
-    virtual ~ChangeDelimiterTest()
-    {
-    }
-
-    virtual void SetUp()
     {
         template_string = "Hi I am {{name}}.\n";
         template_string += "{{=<\% \%>=}}";
@@ -47,11 +41,10 @@ class ChangeDelimiterTest : public ::testing::Test
         result_file = t2.render(file, ctx);
     }
 
-    virtual void TearDown()
+    ~ChangeDelimiterTest()
     {
         remove(file.c_str());
     }
-
 };
 
 // Tests that a simple mustache tag is replaced

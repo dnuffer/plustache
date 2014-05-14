@@ -1,15 +1,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "plustache_types.hpp"
+#include "gmock_to_boost.hpp"
 
 // The fixture for testing class Foo.
-class NestedSectionsTest : public ::testing::Test
+class NestedSectionsTest
 {
- protected:
+ public:
     std::string result_string;
     std::string result_file;
     std::string template_string;
@@ -18,10 +20,12 @@ class NestedSectionsTest : public ::testing::Test
 
     NestedSectionsTest()
     {
+		 SetUp();
     }
 
     virtual ~NestedSectionsTest()
     {
+		 TearDown();
     }
 
     virtual void SetUp()

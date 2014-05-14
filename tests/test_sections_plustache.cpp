@@ -1,15 +1,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "plustache_types.hpp"
+#include "gmock_to_boost.hpp"
 
 // The fixture for testing class Foo.
 class SectionsTest : public ::testing::Test
 {
- protected:
+ public:
     std::string result_string;
     std::string result_file;
     std::string template_string;
@@ -18,10 +20,12 @@ class SectionsTest : public ::testing::Test
 
     SectionsTest()
     {
+		 SetUp();
     }
 
     virtual ~SectionsTest()
     {
+		 TearDown();
     }
 
     virtual void SetUp()
@@ -57,14 +61,14 @@ class SectionsTest : public ::testing::Test
 };
 
 // Tests that a simple mustache tag is replaced
-TEST_F(SectionsTest, TestSectionMustacheFromString)
+TEST_F(SectionsTest, TestSectionsMustacheFromString)
 {
     std::string expected = "Hi I am Daniel.\n";
           expected += "I like turtles.";
     EXPECT_EQ(expected, result_string);
 }
 
-TEST_F(SectionsTest, TestSectionMustacheFromFile)
+TEST_F(SectionsTest, TestSectionsMustacheFromFile)
 {
     std::string expected = "Hi I am Daniel.\n";
           expected += "I like turtles.";

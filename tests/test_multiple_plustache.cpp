@@ -1,15 +1,16 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "plustache_types.hpp"
+#include "gmock_to_boost.hpp"
 
 // The fixture for testing class Foo.
-class MultipleTest : public ::testing::Test
+struct MultipleTest
 {
- protected:
     std::string result_string;
     std::string result_file;
     std::string template_string;
@@ -18,10 +19,12 @@ class MultipleTest : public ::testing::Test
     std::string file;
     MultipleTest()
     {
+		 SetUp();
     }
 
     virtual ~MultipleTest()
     {
+		 TearDown();
     }
 
     virtual void SetUp()

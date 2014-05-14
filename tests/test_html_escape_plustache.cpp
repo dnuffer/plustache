@@ -1,15 +1,15 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "plustache_types.hpp"
+#include "gmock_to_boost.hpp"
 
-// The fixture for testing class Foo.
-class HtmlEscapeTest : public ::testing::Test
+struct HtmlEscapeTest
 {
- protected:
     std::string result_escaped_string;
     std::string result_escaped_file;
     std::string result_unescaped_string;
@@ -22,10 +22,12 @@ class HtmlEscapeTest : public ::testing::Test
 
     HtmlEscapeTest()
     {
+		 SetUp();
     }
 
     virtual ~HtmlEscapeTest()
     {
+		 TearDown();
     }
 
     virtual void SetUp()

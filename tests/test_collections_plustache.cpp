@@ -1,16 +1,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 
 #include "template.hpp"
 #include "context.hpp"
 #include "plustache_types.hpp"
+#include "gmock_to_boost.hpp"
 
 // The fixture for testing class Foo.
-class CollectionsTest : public ::testing::Test
+struct CollectionsTest
 {
- protected:
     std::string result_single;
     std::string result_multiple;
     std::string result_multiple_fields;
@@ -18,14 +19,6 @@ class CollectionsTest : public ::testing::Test
     std::string template_single_string;
 
     CollectionsTest()
-    {
-    }
-
-    virtual ~CollectionsTest()
-    {
-    }
-
-    virtual void SetUp()
     {
         template_string = "Hi I am {{me}}.\n";
         template_string += "{{# people}}";
@@ -70,11 +63,6 @@ class CollectionsTest : public ::testing::Test
         result_multiple = t.render(template_single_string, ctx_multiple);
         result_multiple_fields = t.render(template_string, ctx);
     }
-
-    virtual void TearDown()
-    {
-    }
-
 };
 
 // Tests that a simple mustache tag is replaced
